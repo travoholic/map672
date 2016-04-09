@@ -1,2 +1,3 @@
-# map672
-Modules for NMP MAP672 course.
+# Kirsty Henderson's MAP672 Modules
+
+I'm super excited to be learning this!
