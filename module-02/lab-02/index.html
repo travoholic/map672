@@ -5,9 +5,61 @@
     <meta charset=utf-8 />
     <title>MAP672 Module 2 Template</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 
     <style>
-        /* CSS style rules go here! */
+        
+        body {
+            padding: 0px;
+            border: 5px solid purple;
+            background: #f5f5f5;
+            font-family: sans-serif;
+            color: #3d3d3d;
+            max-width: 850px;
+        }
+        h1 {
+            font-size: 2em;
+            margin: 25px;
+            text-decoration: underline;
+        }
+        h2 {
+            font-size: 1.4em;
+            margin: 25px;
+            color: purple;
+        }
+        p {
+            font-size: 1em;
+            margin: 15px 25px;
+            max-width: 800px;
+        }
+        a {
+            color: #3e6b93;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        img {
+            margin: 25px;
+            border: 2px solid purple;
+        }    
+        
+        #box {
+            width: 200px;
+            height: 200px;
+            background: #3e6b93;
+            margin: 25px;
+        }
+        
+        .circle {
+            width: 100px;
+            height: 100px;
+            background: #bf6864;
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 25px;
+        }
         
     </style>
 </head>
@@ -24,11 +76,11 @@
     THE CARTOGRAPHIC GAZE [...] has come to see itself as a technical-scientific practice of representing (mirroring) nature. It has accepted a universalist logic, underpinned by commitments to particular forms of parametric space, geometry and scale. It is, above all, a controlling gaze rendering the broad swaths of worldly complexity and enormity in miniature form for a discrete purpose. And, as the history of mapping demonstrates, the ordering principles of the cartographic gaze have always had political intent and/or consequences. The cartographic gaze is dominated by a commitment to modeling a God's-eye view, what Donna Haraway (1991) called the 'God-trick'. This transcendental positioning is both the view from above, an elevated two-point perspective bird's-eye-view, and an all seeing eye that views everywhere at the same time.
 
         WHILE CONSIDERING THIS MAP IMAGE
-        
+    </p>
+    
     <img src="images/world.png" alt="world map">
     
-    </p>
-    <img src="images/world2.png" alt="world map">
+    <div id="map"><img src="images/world2.png" alt="world map"></div>
     
     <!-- COMMENTS GO HERE -->
     
@@ -48,7 +100,21 @@
     <div class="circle"></div>
 
     <script>
-        // JavaScript code goes here  
+        
+        document.querySelector('h1').innerHTML = 'web mapping is sweet!';
+        
+        var box = document.getElementById('box');
+        box.style.background = '#4d4a9f'; 
+        
+        box.addEventListener('click', function() {
+        this.style.width = '400px';   
+        });
+        
+        var newListItem = document.createElement('li');
+        newListItem.innerHTML = "list item 4";
+        document.querySelector('ul').appendChild(newListItem);
+        
+        console.log("hello map");
         
     </script>
     
