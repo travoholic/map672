@@ -13,15 +13,22 @@
             padding: 0px;
             border: 5px solid purple;
             background: #f5f5f5;
-            font-family: sans-serif;
+            font-family: verdana;
             color: #3d3d3d;
             max-width: 850px;
         }
+        
+        /* CSS setting the font to underlined 'Calibri' at 3em in size, and indenting 25px from the left side */
+        
         h1 {
-            font-size: 2em;
+            font-size: 3em;
+            font-family: calibri;
             margin: 25px;
             text-decoration: underline;
         }
+
+        /* CSS setting the font color to purple, 1.4em in size, adopting the font 'Verdana' from the <body> tag's CSS and indenting 25px from the left side */
+
         h2 {
             font-size: 1.4em;
             margin: 25px;
@@ -43,7 +50,9 @@
         img {
             margin: 25px;
             border: 2px solid purple;
-        }    
+        }
+        
+        /* CSS creating a blue (color #3e6b93) box 200 x 200px in size, indented 25px from the left side */
         
         #box {
             width: 200px;
@@ -52,6 +61,8 @@
             margin: 25px;
         }
         
+        /* CSS creating a red (color #bf6864) circle with a 100px diametre and a 25px margin on the left side */
+
         .circle {
             width: 100px;
             height: 100px;
@@ -68,21 +79,12 @@
 <!-- Structured HTML goes within the body tags -->
     
     <h1>Map of the World</h1>
-    <h2>A Super Cool Pixelated Map of Planet Earth</h2>
-    <p>RESPOND TO THIS:
-    
-        
-
-    THE CARTOGRAPHIC GAZE [...] has come to see itself as a technical-scientific practice of representing (mirroring) nature. It has accepted a universalist logic, underpinned by commitments to particular forms of parametric space, geometry and scale. It is, above all, a controlling gaze rendering the broad swaths of worldly complexity and enormity in miniature form for a discrete purpose. And, as the history of mapping demonstrates, the ordering principles of the cartographic gaze have always had political intent and/or consequences. The cartographic gaze is dominated by a commitment to modeling a God's-eye view, what Donna Haraway (1991) called the 'God-trick'. This transcendental positioning is both the view from above, an elevated two-point perspective bird's-eye-view, and an all seeing eye that views everywhere at the same time.
-
-        WHILE CONSIDERING THIS MAP IMAGE
+    <h2>A Super Cool Pixel-Style Map of Planet Earth</h2>
+    <p>Trying to squash the entire globe onto a 2D plane for mapping is kind of a large challenge. There's really no perfect way to do this and so compromises have to be made that will result in distortions. Decisions have to be made and most result in imperfect solutions that are a reflection of the map maker's background and biases. Those ridiculous USA-centered maps that chop Russia into two parts are a good example of this. At least with the image below, Greenland isn't the same size as AFrica which, as someone who lives in Africa, is always annoying to see.
     </p>
-    
-    <img src="images/world.png" alt="world map">
-    
     <div id="map"><img src="images/world2.png" alt="world map"></div>
     
-    <!-- COMMENTS GO HERE -->
+    <!-- Paragraph with font size 1em, a 25px margin on the left, and a maximum width of 800px that contains a link to an external webpage http://www.baconipsum.com with the anchor text 'Bacom ipsum generator'. -->
     
     <p>paragraph with link: <a href="https://baconipsum.com/"> Bacon ipsum generator</a> dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl.</p>
     <ul>
@@ -92,7 +94,7 @@
         <li><a href="https://d3js.org/">Data-Driven Documents</a></li>
     </ul>
     
-    <!-- COMMENTS GO HERE -->
+    <!-- div tag that calls in the CSS for the id 'box' and draws a 200 x 200px blue box in this location. -->
     
     <div id="box"></div>
     <div class="circle"></div>
@@ -104,7 +106,9 @@
         document.querySelector('h1').innerHTML = 'web mapping is sweet!';
         
         var box = document.getElementById('box');
-        box.style.background = '#4d4a9f'; 
+        box.style.background = '#4d4a9f';
+        
+        // Javascript that inreases the width of the 'box' element to 400px when the user clicks on it in the web browser
         
         box.addEventListener('click', function() {
         this.style.width = '400px';   
