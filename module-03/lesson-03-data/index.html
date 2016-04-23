@@ -17,8 +17,113 @@
 <script>
 /* JavaScript code goes here! */
 
-    console.log(hello map);
+    console.log('hello map');
     
+    console.log(5);             // output is 5, a numeric type
+    console.log('5');           // output is 5, a string type
+    console.log(5.5);           // output is 5.5
+    console.log(5e10);          // output is 50000000000
+    
+    console.log(true);
+    console.log(false);
+    console.log('true');
+    console.log('false');
+    
+    console.log(5 + 8);         // output will be 13
+    
+    console.log(5 < 8);         // evaluates to true
+    console.log(5 > 8);         // evaluates to false
+    console.log(5 == 8);        // evaluates to false
+    console.log(5 != 8);        // evaluates to true
+    
+    console.log('My name is' + ' Vance Alligator');
+    
+    console.log(5 + '8');       // output is 58
+    console.log(5 + "hello map"); // output is a string value "5hello map"
+    
+    console.log(5 < '8');       // output is true
+    console.log(5 > '8');       // output is false
+    console.log(5 == '5');      // output is true!?!?!
+    console.log(5 === '5')      // output is false
+    
+    console.log(1 < 2 && 2 < 3);    // output is true
+    console.log(1 < 2 && 2 > 3);    // output is false
+    console.log(1 < 2 || 2 > 3);    // output is true
+    
+    console.log(!true);         // output is false
+    console.log(1 != 2);        // output is true
+    console.log(1 != 1);        // output is false
+    
+    var city = 'Frankfort';
+    var state = 'Kentucky';
+    console.log(city, ', ',state);
+    
+    var total1 = 15 + 20;
+    console.log(total1);
+    var value1 = 30;
+    var value2 = 60;
+    var total2 = value1 + value2;
+    console.log(total2);
+    var average = total1/total2;
+    console.log(average);
+    
+    var year = 2015;
+    console.log(year);          // year references the number 2015
+    var year = year + 1;
+    console.log(year);          // year now references the number 2016
+    
+    var cityPop = 308428;
+    console.log('The population of Lexington is ', cityPop);
+    
+    var cities = [];            // creates an empty array
+    console.log(cities);
+    
+    var cities = ['Frankfort', 'Louisville', 'Lexington'];
+    console.log(cities);
+    
+    var populations = [25527, 756832, 308428];
+    console.log(populations);
+    
+    var populations = ["Frankfort", 756832, false];
+    console.log(populations);
+    
+    var twoDArray = [
+        ["Frankfort", "Louisville", "Lexington"],
+        [25527, 756832, 308428],
+        ["Frankfort", 756832, false]
+    ];
+    console.log(twoDArray);
+    
+    var cities = ['Frankfort', 'Louisville', 'Lexington'];
+    console.log(cities[0]);     // outputs the string 'Frankfort'
+    console.log(cities[1]);     // outputs the string 'Louisville'
+    console.log(cities[2]);     // outputs the string 'Lexington'
+    console.log(cities[3]);     // outputs undefined
+    
+    var twoDArray = [
+        ['Frankfort', 'Louisville', 'Lexington'],
+        [25527, 756832, 308428],
+        ["Frankfort", 756832, false]
+    ];
+    console.log(twoDArray[0][2]); // output will be Lexington
+    console.log(twoDArray[2][1]); // output will be 756832
+    
+    var years = [2010, 2011, 2022, 2013, 2014];
+    console.log(years);
+    
+    years[2] = 2012;
+    console.log(years);         // the array has been updated with a new year
+    
+    var counties = [];
+    console.log(counties);  // output is an empty Array
+    counties[0] = 'Adair';
+    console.log(counties); // output is a single item Array ["Adair"]
+    counties[1] = 'Allen';
+    console.log(counties); // output is now ["Adair", "Allen"]
+    
+    counties[5] = 'Anderson';
+    console.log(counties); // what is this output?  
+
 </script>
     
 </body>
