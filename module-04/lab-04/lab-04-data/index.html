@@ -88,21 +88,29 @@
         ];
     console.log(cityCoords[0][2]); // output will be -1.5008
     console.log(cityCoords[1][1]); // output will be 29.2525
-        
-        var cityPops = ['8988000', '106000', '71511'];
-        
-        var cityCapital = ['true', 'false', 'false'];
-
 
 // Kigali -1.9562, 30.0854
 // Rubavu -1.6888, 29.2525
 // Musanze -1.5008, 29.6342
+        
+        var cityPops = ['8988000', '106000', '71511'];
+        
+        var cityCapital = [true, false, false];
 
+        for(var i = 0; i < cities.length; i++) {
+            console.log(cities[i]);
+            
+            console.log(cityPops[i]);
+            
+            if(cityCapital[i] == true) {
+                console.log(cities[i] +' is the capital city.');
+            }
+        }
 
-//        for(/* add code here */) {
+//        for(CODE GOES HERE) {
 //            
-//            var popup = "<b>"+/* add code here */+"</b><br>"
-//                            +"<b>population</b>: "+/* add code here */;
+//            var popup = "<b>"+cities[i]+"</b><br>"
+//                            +"<b>population</b>: "+cityPops[i];
 //
 //            if(/* add code here */) {
 //               
