@@ -69,8 +69,8 @@
         var targetDiv = 'map';
 
         var options = {
-            center: [0, 0],
-            zoom: 2
+            center: [-1.7176, 29.6768],
+            zoom: 9
         }
         map = L.map(targetDiv, options);
         var tiles = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
@@ -80,6 +80,24 @@
         
         // begin writing/editing Lab 04 code here
         
+        var cities = ['Kigali', 'Rubavu', 'Ruhengeri'];
+
+        var cityCoords = [
+            [-1.9562, -1.6888, -1.5008],
+            [30.0854, 29.2525, 29.6342],
+        ];
+    console.log(cityCoords[0][2]); // output will be -1.5008
+    console.log(cityCoords[1][1]); // output will be 29.2525
+        
+        var cityPops = ['8988000', '106000', '71511'];
+        
+        var cityCapital = ['true', 'false', 'false'];
+
+
+// Kigali -1.9562, 30.0854
+// Rubavu -1.6888, 29.2525
+// Musanze -1.5008, 29.6342
+
 
 //        for(/* add code here */) {
 //            
