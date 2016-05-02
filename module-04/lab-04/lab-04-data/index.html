@@ -87,14 +87,16 @@
             [30.0854, 29.2525, 29.6342], // defines teh lat/long of each city
         ];
         
-        var cityPops = ['8988000', '106000', '71511']; // defines city populations
+        var cityPops = [8988000, 106000, 71511]; // defines city populations
         var cityCapital = [true, false, false]; // defines Kigali as Rwanda's capital city
 
         for(var i = 0; i < cities.length; i++) {
-            var popup = "<b>"+cities[i]+"</b><br>"+"<b>population</b>: "+cityPops[i].toLocaleString(); // toLocaleString() isn't working for some reason I can't figure out
+            var popup = "<b>"+cities[i]+"</b><br>"+"<b>population</b>: "+cityPops[i].toLocaleString();
             
             if(cityCapital[i] == true) {
                 console.log(cities[i] +' is the capital city.');
+
+                popup += "<br>Is the capital city."; 
             }
                         
             if(cities[i] == 'Kigali') {  //plots Kigali on the map
@@ -109,6 +111,24 @@
             }
             
         }
+        
+//        for(/* add code here */) {
+//            
+//            var popup = "<b>"+/* add code here */+"</b><br>"
+//                            +"<b>population</b>: "+/* add code here */;
+//
+//            if(/* add code here */) {
+//               
+//                popup += "<br>Is the capital city."; 
+//                
+//            } 
+//            
+//            L.marker(/* add code here */).addTo(map)
+//                .bindPopup(popup);
+//        }
+        
+        
+        
         
         // end writing/editing Lab 04 code here
         
