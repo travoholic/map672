@@ -59,9 +59,6 @@
 
     <footer>
         <p>Map authored by Kirsty Henderson</p>
-        <p>Additional information about the data and map goes here.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl. Vestibulum commodo imperdiet lacus, sed facilisis erat placerat sit amet. Nulla consequat malesuada neque eget aliquet. Integer non convallis nisl, gravida ultrices ex. Fusce nec vestibulum elit. Sed elementum lectus ipsum, vulputate elementum ex laoreet a. Aenean eu ex varius, varius felis vitae, efficitur nulla. Quisque pretium laoreet ante, in sodales dui vehicula at. Mauris eu sem sapien.
-        </p>
     </footer>
 
     <script>
@@ -82,15 +79,18 @@
         
         var cities = ['Kigali', 'Rubavu', 'Ruhengeri']; // defines three main cities in Rwanda
 
+        // store coords for each city as a single array
         var cityCoords = [
-            [-1.9562, -1.6888, -1.5008],
-            [30.0854, 29.2525, 29.6342], // defines teh lat/long of each city
+            [-1.9562, 30.0854],
+            [-1.6888, 29.2525],
+            [-1.5008, 29.6342] // defines teh lat/long of each city
         ];
         
         var cityPops = [8988000, 106000, 71511]; // defines city populations
         var cityCapital = [true, false, false]; // defines Kigali as Rwanda's capital city
 
         for(var i = 0; i < cities.length; i++) {
+            
             var popup = "<b>"+cities[i]+"</b><br>"+"<b>population</b>: "+cityPops[i].toLocaleString();
             
             if(cityCapital[i] == true) {
@@ -98,39 +98,24 @@
 
                 popup += "<br>Is the capital city."; 
             }
+            
+            // insert that array within the L.marker parentheses
+            L.marker(cityCoords[i]).addTo(map)
+                .bindPopup(popup);
                         
-            if(cities[i] == 'Kigali') {  //plots Kigali on the map
-                L.marker([cityCoords[0][0],cityCoords[1][0]]).addTo(map)
-                .bindPopup(popup);
-            } else if (cities[i] == 'Rubavu') { // plots Rubavu on the map
-                L.marker([cityCoords[0][1],cityCoords[1][1]]).addTo(map)
-                .bindPopup(popup);
-            } else { // plots the final marker on the map for Ruhengeri
-                 L.marker([cityCoords[0][2],cityCoords[1][2]]).addTo(map)
-                .bindPopup(popup);
-            }
+//            if(cities[i] == 'Kigali') {  //plots Kigali on the map
+//                L.marker([cityCoords[0][0],cityCoords[1][0]]).addTo(map)
+//                .bindPopup(popup);
+//            } else if (cities[i] == 'Rubavu') { // plots Rubavu on the map
+//                L.marker([cityCoords[0][1],cityCoords[1][1]]).addTo(map)
+//                .bindPopup(popup);
+//            } else { // plots the final marker on the map for Ruhengeri
+//                 L.marker([cityCoords[0][2],cityCoords[1][2]]).addTo(map)
+//                .bindPopup(popup);
+//            }
             
         }
-        
-//        for(/* add code here */) {
-//            
-//            var popup = "<b>"+/* add code here */+"</b><br>"
-//                            +"<b>population</b>: "+/* add code here */;
-//
-//            if(/* add code here */) {
-//               
-//                popup += "<br>Is the capital city."; 
-//                
-//            } 
-//            
-//            L.marker(/* add code here */).addTo(map)
-//                .bindPopup(popup);
-//        }
-        
-        
-        
-        
-        // end writing/editing Lab 04 code here
+
         
           
     </script>
