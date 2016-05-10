@@ -115,71 +115,135 @@
     // write a function here named mapCities so that it accepts units as a parameter
     
     function mapCities(units) {
-    
-        if(units == 'miles') {
-            calcPopDensity(cityPops, cityCoords, units);
-        } else if(units == 'km') {
-            calcPopDensity(cityPops, cityCoords, units);
-        } else {
-            console.log('Not understood');
+
+        for(var i=0; i < cities.length; i++){
+            
+            var density = calcPopDensity(density);
+            console.log(density);
+        
         }
 
     }
+    
 
     function calcPopDensity(cityPops, cityCoords, units) {
-        for (var i = 0; i < cities.length; i++) {
-            
-            var density = cityPops[i] / cityAreas[i];
-            console.log(cities[i] + ' has ' + density + ' people per square mile.');
-        }
-        console.log('DENSITY: ' + density);
+
+            for(var i=0; i < cities.length; i++){
+                if(units == 'miles') {
+                    var density = cityPops[i] / cityAreas[i];
+                    console.log(cities + ' has ' + density + ' people per square mile.');
+                }
+                else if (units == 'km') {
+                    var density = cityPops[i] / cityAreas[i] * 1.60934;
+                    console.log(cities + ' has ' + density + ' people per square kilometer.');
+                }
+                else {
+                    console.log('Not understood.');
+                }
+
+            }
     }
     
-//    
-//    function mapCities(units) {
-//        
-////        if(units == 'miles') {
-////            console.log('MILES: ' + units);        
-////        } else if(units == 'km') {
-////            console.log('KM: ' + units);
-////        } else {
-////            console.log('Not understood.');
-////        }
+       // we have three numbers
+    var cities =  ['Kigali', 'Kampala', 'Bujumbura'];
+    var cityAreas =  [281.9, 72.97, 33.41];
+    var cityPops = [603049, 1209000, 497169];
+
+    var units = prompt('Enter the units for calculating density', 'Enter "miles" or "km"');
+
+    // we want to log them to console
+    // so we call a function and send them into that function
+    calcPopDensity2(cities, cityAreas, cityPops, units);
+
+    function calcPopDensity2(names, nums, numsTen, unitsIn){
+      // function accepts that array as nums
+
+        //for all of our numbers stored within nums array
+        // loop through each, i is a counter for each loop
+        for(var i=0; i < cities.length; i++){
+        
+        // before we log them, we want to double them
+            if(units == 'miles') {
+        var doubleNumValue = doubleNum(numsTen[i] / nums[i]); // i here access each one
+            } else if(units == 'km') {
+        var doubleNumValue = doubleNum(numsTen[i] / nums[i] *  1.60934); // i here access each one
+            }
+            else {
+                console.log('Not understood.');
+            }
+
+        // THE NEXT LINE DOESN'T HAPPEN UNTIL ... the code within doubleNum runs!!!
+
+        // now we log them
+        console.log(doubleNumValue); // output is 2 4 6
+
+      }  // end for loop
+
+    }  // end logNumsToConsole() function
+    
+    
+    
+
+    function doubleNum(num1){
+
+      // for each number, we double it and return the value
+      return num1 * 2;
+
+    } // end doubleNum() function 
+    
+    
+    
+    
+//        }
 //    }
+    
+//    function calcPopDensity(cityPops, cityCoords, units) {
+//        for (var i = 0; i < cities.length; i++) {
+//            
+//            var density = cityPops[i] / cityAreas[i];
+//            console.log(cities[i] + ' has ' + density + ' people per square mile.');
+//        }
+//        console.log('DENSITY: ' + density);
+//    }
+    
+//    
+
     
     // write a function named calcPopDensity here so that it accepts a single city's population, area, and the value for units determined by the user
     
-//    var area = cityAreas;
-//    var population = cityPops;
-//    var units = 'km';
-//
-//    function calcPopDensity() {
-//        
-//            if(units == 'miles') {
-//                var density = cityPops[i] / cityAreas[i];
-//                console.log(cities[i] + ' has ' + density + ' people per square mile.');
-//            } else if(units == 'km') {
-//                var density = cityPops[i] / cityAreas[i] *1.60934;
-//                console.log(cities[i] + ' has ' + density + ' people per square kilometre.');
-//            } else {
-//                console.log('Not understood.');
-//            }
-//            console.log('Density ' + density);
-//            return density;
-//    }
+    var area = cityAreas;
+    var population = cityPops;
+    var units = 'km';
+
+    function calcPopDensity(density) {
+        
+            if(units == 'miles') {
+                var density = cityPops[i] / cityAreas[i];
+                console.log(cities[i] + ' has ' + density + ' people per square mile.');
+                return density;
+            } else if(units == 'km') {
+                var density = cityPops[i] / cityAreas[i] *1.60934;
+                console.log(cities[i] + ' has ' + density + ' people per square kilometre.');
+                return density;
+            } else {
+                console.log('Not understood.');
+            }
+            console.log('Density ' + density);
+            return density;
+    }
 
     // Plots the markers to the map.
     
-//    for (var i = 0; i < cities.length; i++) {
-//    
-//        var density = calcPopDensity(area,population,units);
-//        console.log(density);
-//
-//        var popup = '<h3>' + cities[i] + '</h3><b>Population Density:</b> '+ density.toLocaleString() + '<br>(' + cityPops[i].toLocaleString() + ' divided by ' + cityAreas[i].toLocaleString() + ')';
-//        
-//        L.marker(cityCoords[i]).addTo(map)
-//                 .bindPopup(popup);
-//    }
+    for (var i = 0; i < cities.length; i++) {
+    
+        var density = calcPopDensity(area,population,units);
+        console.log(density);
+
+        var popup = '<h3>' + cities[i] + '</h3><b>Population Density:</b> '+ density.toLocaleString() + '<br>(' + cityPops[i].toLocaleString() + ' divided by ' + cityAreas[i].toLocaleString() + ')';
+        
+        L.marker(cityCoords[i]).addTo(map)
+                 .bindPopup(popup);
+    }
         
 </script>
     
