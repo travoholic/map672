@@ -98,6 +98,9 @@
             [0.3476,32.5825],
             [-3.3762,29.3541],
         ];
+        var citiesTest = 'Kigali';
+        var popTest = 603049;
+        var areasTest = 281.9;
         
     var button = document.getElementById("map-cities");
     
@@ -112,58 +115,71 @@
     // write a function here named mapCities so that it accepts units as a parameter
     
     function mapCities(units) {
-        
+    
         if(units == 'miles') {
-            console.log('MILES: ' + units);        
+            calcPopDensity(cityPops, cityCoords, units);
         } else if(units == 'km') {
-            console.log('KM: ' + units);
+            calcPopDensity(cityPops, cityCoords, units);
         } else {
-            console.log('Not understood.');
+            console.log('Not understood');
         }
+
     }
+
+    function calcPopDensity(cityPops, cityCoords, units) {
+        for (var i = 0; i < cities.length; i++) {
+            
+            var density = cityPops[i] / cityAreas[i];
+            console.log(cities[i] + ' has ' + density + ' people per square mile.');
+        }
+        console.log('DENSITY: ' + density);
+    }
+    
+//    
+//    function mapCities(units) {
+//        
+////        if(units == 'miles') {
+////            console.log('MILES: ' + units);        
+////        } else if(units == 'km') {
+////            console.log('KM: ' + units);
+////        } else {
+////            console.log('Not understood.');
+////        }
+//    }
     
     // write a function named calcPopDensity here so that it accepts a single city's population, area, and the value for units determined by the user
     
-    var area = cityAreas;
-    var population = cityPops;
-    var units = 'km';
-    
-    for (var i = 0; i < cities.length; i++) {
-    
-        var density = calcPopDensity(area,population,units);
-        console.log(density);
+//    var area = cityAreas;
+//    var population = cityPops;
+//    var units = 'km';
+//
+//    function calcPopDensity() {
+//        
+//            if(units == 'miles') {
+//                var density = cityPops[i] / cityAreas[i];
+//                console.log(cities[i] + ' has ' + density + ' people per square mile.');
+//            } else if(units == 'km') {
+//                var density = cityPops[i] / cityAreas[i] *1.60934;
+//                console.log(cities[i] + ' has ' + density + ' people per square kilometre.');
+//            } else {
+//                console.log('Not understood.');
+//            }
+//            console.log('Density ' + density);
+//            return density;
+//    }
 
-        var popup = '<h3>' + cities[i] + '</h3><b>Population Density:</b> '+ density.toLocaleString() + '<br>(' + cityPops[i].toLocaleString() + ' divided by ' + cityAreas[i].toLocaleString() + ')';
-        
-        L.marker(cityCoords[i]).addTo(map)
-                 .bindPopup(popup);
-    }
-        
-
-
-    function calcPopDensity(cityAreas, cityPops, units) {
-        
-            if(units == 'miles') {
-                var density = cityPops[i] / cityAreas[i];
-                console.log(cities[i] + ' has ' + density + ' people per square mile.');
-            } else if(units == 'km') {
-                var density = cityPops[i] / cityAreas[i] *1.60934;
-                console.log(cities[i] + ' has ' + density + ' people per square kilometre.');
-            } else {
-                console.log('Not understood.');
-            }
-            console.log('Density ' + density);
-            return density;
-    }
+    // Plots the markers to the map.
     
-    
-    
-// MARKER CODE
-    
-
-    
-// MARKER CODE
-    
+//    for (var i = 0; i < cities.length; i++) {
+//    
+//        var density = calcPopDensity(area,population,units);
+//        console.log(density);
+//
+//        var popup = '<h3>' + cities[i] + '</h3><b>Population Density:</b> '+ density.toLocaleString() + '<br>(' + cityPops[i].toLocaleString() + ' divided by ' + cityAreas[i].toLocaleString() + ')';
+//        
+//        L.marker(cityCoords[i]).addTo(map)
+//                 .bindPopup(popup);
+//    }
         
 </script>
     
