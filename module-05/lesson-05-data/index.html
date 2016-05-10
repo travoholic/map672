@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>Lesson 05 Starter Template</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+</head>
+
+<body>
+
+
+<script>
+
+    helloMap();         // function 'hoisting'
+    
+    function helloMap() {
+        console.log('Hello Map');
+    }
+    
+    helloMap();         // calls the funtion
+    helloMap();         // calls it again
+    helloMap();         // and again...
+    
+    var helloMap = function() {
+        console.log('Hello Map - Function Expression');
+    }
+    
+    helloMap();
+    
+    function outerFunction(message) {
+        console.log(message);
+        var innerFunction = function(message) {
+            console.log(message);
+        };
+        innerFunction("I'm inside!");
+    }
+    outerFunction("I'm outside!");
+    
+    function saySomething(message) {        // function accepts the parameter
+        console.log(message);
+    }
+    
+    saySomething('Hello Map'); // function is called passing the 'argument'
+    saySomething('Please enter the address you would like to search for.');
+    
+    
+    function saySomething(message) {
+        console.log(message);
+    }
+    
+    var firstMessage = 'Hello Map';
+    saySomething(firstMessage);
+    
+    var secondMessage = 'Please enter the address you would like to search for.';
+    saySomething(secondMessage);
+    
+    
+    function saySomething(message) {
+        console.log(message);
+    }
+    
+    var message = 'Hello Map';
+    saySomething(message);
+    
+    var message = 'Please enter the address you would like to search for.';
+    saySomething(message);
+    
+    
+    function calcAreaRect(width,height) {
+        var area = width * height;
+        console.log(area);
+    }
+    
+    calcAreaRect(40,30);
+    
+    
+    
+    function calcAreaRect(width,height) {
+        var area = width * height;
+        console.log(area);
+    }
+
+    var width = 40;
+    var height = 30;
+    
+    calcAreaRect(width,height);
+    
+    
+    
+    function calcAreaRect(width,height) {
+        var area = width * height;
+        console.log(area);
+    }
+
+    var peanutButter = 40;
+    var jelly = 30;
+    
+    calcAreaRect(peanutButter,jelly);
+    
+    
+    function calcAreaRect(width,height) {
+        var area =  width * height;
+        return area;
+    }
+    
+    var calculatedArea = calcAreaRect(40,30);  // <-- the return value is assigned to calculated Area
+    console.log(calculatedArea);
+    
+    
+    function sayThings() {
+        console.log('Thing 1');
+        console.log('Thing 2');
+        return;
+        console.log('Thing 3');
+    }
+    
+    sayThings();
+    
+    
+    function getMultiValues() {
+        var value1 = 5;
+        var value2 = 'iguana';
+        return [value1,value2];
+    }
+    
+    var values = getMultiValues();
+    console.log(values[0]);         // output is 5
+    console.log(values[1]);         // output is iguana
+    
+    
+    function sayHello() {
+        var greeting = "Hi, I'm a web mapper.";
+        console.log(greeting);
+    }
+    
+    sayHello();             // function call
+    console.log(greeting);  // throws an error
+    
+    
+    function sayHello(){
+        var greeting = "Hi, I’m a web mapper."; // variable defined within the function scope
+        console.log(greeting); // output is "Hi, I’m a web mapper"
+    }
+
+    sayHello();  // output is "Hi, I’m a web mapper"
+
+    var greeting = "Howdy, I'm a cartographer"; // variable defined within the global scope
+    console.log(greeting); // output is "Howdy, I'm a cartographer"
+
+    
+    function sayHello(){
+       console.log(greeting); 
+    }
+
+    var greeting = "Howdy, I'm a cartographer"; // variable defined within the global scope
+
+    sayHello();  // output is "Howdy, I'm a cartographer"
+    
+    
+    // an array of three numbers
+    var myNums = [1, 2, 3];
+    
+    // we want to log them to the console calling a funtion to first send them to
+    logNumsToConsole(myNums);
+    
+    function logNumsToConsole(nums) {
+    // the functionaccepts that array as nums
+
+        for(var i=0; i < nums.length; i++){
+            // loop through each, i is a counter for each loop
+        
+            // before we log the numbers, we want to double them
+            var doubleNumValue = doubleNums(nums[i]);   // i here accesses each one
+        
+            // the next line doesn't happen until the code with doubleNum runs !!!
+    
+            // now we log them
+            console.log(doubleNumValue); // output is 2 4 6
+        
+        } // end the for loop
+        
+    } // end logNumsToConsole
+    
+    function doubleNums(num) {
+        
+        // for each number, we double it and return the value
+        return num * 2;
+        
+    }   // end doubleNum function
+
+    
+</script>
+    
+</body>
+
+</html>
