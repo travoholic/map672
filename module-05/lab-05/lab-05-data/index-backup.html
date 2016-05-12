@@ -56,17 +56,15 @@
 
 <body>
     <header>
-        <h1>Map Title</h1>
-        <h2>Map Subtitle</h2>
+        <h1>Population Densities in Kigali, Bujumbura, and Kampala</h1>
+        <h2>Population densities in three major cities in the Great Lakes region of Africa displayed on a map.</h2>
     </header>
 
     <div id='map'></div>
     <button id='map-cities'>Map Cities</button>
     <footer>
-        <p>Map authored by YOUR NAME</p>
-        <p>Additional information about the data and map goes here.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl.
-        </p>
+        <p>Map authored by Kirsty Henderson</p>
+        <p>My cobbled-together, somewhat-correct attempt at Lab 5.</p>
     </footer>
 
 <script>
@@ -91,7 +89,7 @@
     map.addLayer(tiles);
     
         var cities = ['Kigali', 'Kampala', 'Bujumbura'];
-        var cityAreas = [281.9, 72.97, 33.41];
+        var cityAreas = [281.9, 72.97, 33.41]; // city's areas in miles
         var cityPops = [603049, 1209000, 497169];
         var cityCoords = [
             [-1.9591, 30.0764],
@@ -109,9 +107,9 @@
         
         for (var i = 0; i < cities.length; i++) {
 
-            var density = calcPopDensity(cities[i], cityAreas[i], cityPops[i], units);
+            var density = calcPopDensity(cityAreas[i], cityPops[i], units);
             
-            var popup = '<h3>' + cities[i] + '</h3><b>Population Density:</b>' + density + '<br>(Population: ' + cityPops[i] + ', Area: ' + cityAreas[i] + ')';
+            var popup = '<h3>' + cities[i] + '</h3><b>Population Density:</b>' + density.toLocaleString();
         
             L.marker(cityCoords[i]).addTo(map)
                  .bindPopup(popup);
@@ -119,6 +117,11 @@
         
     }); // addEventListener callback function ends here
 
+// CALCULATE POPULATION DENSITY
+    
+    
+    
+    
     // write a function here named mapCities so that it accepts units as a parameter
     
         function mapCities(units) {
@@ -129,50 +132,18 @@
 
     // write a function named calcPopDensity here so that it accepts a single city's population, area, and the value for units determined by the user
     
-        function calcPopDensity(cities, cityAreas, cityPops, units) {
+        function calcPopDensity(cityAreas, cityPops, units) {
 
             if(units == 'miles') {
-                var density = cityPops / cityAreas + ' people per square mile';
+                var density = cityPops / cityAreas + ' people per square mile.';
+            } else if(units == 'km') {
+                var density = cityPops / (cityAreas / 0.38610) + ' people per square km.';
             } else {
-                var density = cityPops / cityAreas * 1.60934 + ' people per square km';
+                var units = prompt('Enter the units for calculating density', 'Enter "miles" or "km"'); // figure out how to loop this!!!
             }
 
             return density;
         }
-    
-//    var area = cityAreas;
-//    var population = cityPops;
-//    var units = 'km';
-////
-////    function calcPopDensity(density) {
-////        
-////            if(units == 'miles') {
-////                var density = cityPops[i] / cityAreas[i];
-////                console.log(cities[i] + ' has ' + density + ' people per square mile.');
-////                return density;
-////            } else if(units == 'km') {
-////                var density = cityPops[i] / cityAreas[i] *1.60934;
-////                console.log(cities[i] + ' has ' + density + ' people per square kilometre.');
-////                return density;
-////            } else {
-////                console.log('Not understood.');
-////            }
-////            console.log('Density ' + density);
-////            return density;
-////    }
-//
-//    // Plots the markers to the map.
-//    
-//    for (var i = 0; i < cities.length; i++) {
-//    
-//        var density = calcPopDensity(area,population,units);
-//        console.log(density);
-//
-//        var popup = '<h3>' + cities[i] + '</h3><b>Population Density:</b> '+ density + '<br>(' + cityPops[i] + ' divided by ' + cityAreas[i] + ')';
-//        
-//        L.marker(cityCoords[i]).addTo(map)
-//                 .bindPopup(popup);
-//    }
         
 </script>
     

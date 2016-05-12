@@ -56,25 +56,23 @@
 
 <body>
     <header>
-        <h1>Map Title</h1>
-        <h2>Map Subtitle</h2>
+        <h1>Population Densities in Kigali, Bujumbura, and Kampala</h1>
+        <h2>Population densities in three major cities in the Great Lakes region of Africa displayed on a map.</h2>
     </header>
 
     <div id='map'></div>
     <button id='map-cities'>Map Cities</button>
     <footer>
-        <p>Map authored by YOUR NAME</p>
-        <p>Additional information about the data and map goes here.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl.
-        </p>
+        <p>Map authored by Kirsty Henderson</p>
+        <p>My cobbled-together, somewhat-correct attempt at Lab 5.</p>
     </footer>
 
 <script>
     
     // map options
     var options = {
-        center: [20,-20],
-        zoom: 2
+        center: [-1.0352,31.0529],
+        zoom: 7
     }
     
     // creates the Leaflet map
@@ -90,17 +88,14 @@
     // adds these tiles to the map
     map.addLayer(tiles);
     
-        
-        var cities = ['Kigali', 'Rubavu', 'Ruhengeri'];
-
+        var cities = ['Kigali', 'Kampala', 'Bujumbura'];
+        var cityAreas = [281.9, 72.97, 33.41]; // city's areas in miles
+        var cityPops = [603049, 1209000, 497169];
         var cityCoords = [
-            [-1.9562, -1.6888, -1.5008],
-            [30.0854, 29.2525, 29.6342], // 2D array of city coordinates
+            [-1.9591, 30.0764],
+            [0.3476,32.5825],
+            [-3.3762,29.3541],
         ];
-
-        var cityPops = [8988000, 106000, 71511]; // write the populations of the 3 cities as Numbers within an array;
-
-        var cityAreas = [1000, 2000, 3000]; // write the areas of the 3 cities as Numbers within an array;
         
     var button = document.getElementById("map-cities");
     
@@ -108,62 +103,48 @@
          
         var units = prompt('Enter the units for calculating density', 'Enter "miles" or "km"');
         
-   //     console.log(units);
+        mapCities(units);   // call a function named mapCities, and send the units variable as an argument
         
-        mapCities(units);
-        // call a function named mapCities, and send the units variable as an argument
+        for (var i = 0; i < cities.length; i++) {
+
+            var density = calcPopDensity(cityAreas[i], cityPops[i], units);
+            
+            var popup = '<h3>' + cities[i] + '</h3><b>Population Density:</b>' + density.toLocaleString();
+        
+            L.marker(cityCoords[i]).addTo(map)
+                 .bindPopup(popup);
+        }
         
     }); // addEventListener callback function ends here
-        
-        for(var i=0; i < cities.length; i++){
-            console.log(cities[i]);
-            console.log(cityPops[i]);
-            console.log(cityAreas[i]);
-        }
+
+// CALCULATE POPULATION DENSITY
+    
+    
+    
     
     // write a function here named mapCities so that it accepts units as a parameter
-    function mapCities(units) {
+    
+        function mapCities(units) {
         
-        for(var i=0; i < cities.length; i++){
-            console.log(cities[i]);
+            return units;
+            
         }
-    }
+
+    // write a function named calcPopDensity here so that it accepts a single city's population, area, and the value for units determined by the user
     
-    // we have three numbers
-    var cityPops = [8988000, 106000, 71511];
+        function calcPopDensity(cityAreas, cityPops, units) {
 
-    // we want to log them to console
-    // so we call a function and send them into that function
-    logNumsToConsole(cityPops);
+            if(units == 'miles') {
+                var density = cityPops / cityAreas + ' people per square mile.';
+            } else if(units == 'km') {
+                var density = cityPops / (cityAreas / 0.38610) + ' people per square km.';
+            } else {
+                var units = prompt('Enter the units for calculating density', 'Enter "miles" or "km"'); // figure out how to loop this!!!
+            }
 
-    function logNumsToConsole(nums){
-      // function accepts that array as nums
-
-        //for all of our numbers stored within nums array
-        // loop through each, i is a counter for each loop
-        for(var i=0; i < nums.length; i++){
+            return density;
+        }
         
-        // before we log them, we want to double them
-        var density = doubleNum(nums[i]); // i here access each one
-
-        // THE NEXT LINE DOESN'T HAPPEN UNTIL ... the code within doubleNum runs!!!
-
-        // now we log them
-        console.log(density); // output is 2 4 6
-
-      }  // end for loop
-
-    }  // end logNumsToConsole() function
-
-    function doubleNum(num){
-
-      // for each number, we double it and return the value
-      return num * 2;
-
-    } // end doubleNum() function
-    
-    
-
 </script>
     
 </body>
