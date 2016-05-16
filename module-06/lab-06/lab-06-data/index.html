@@ -83,16 +83,35 @@
         
         var cities = [
              {
-                 name: "Louisville",
+                 name: "Kigali",
                  properties: {
-                     coordinates: [38.25, -85.7667],
-                     population: 756832,
-                     state: "KY"
-                 }
-             }    
+                     coordinates: [-1.9591, 30.0764],
+                     population: 603049,
+                     country: "Rwanda"
+                 },
+             },
+             {
+                 name: "Kampala",
+                 properties: {
+                     coordinates: [0.3476,32.5825],
+                     population: 1209000,
+                     country: "Uganda"
+                 },
+             },
+             {
+                 name: "Bujumbura",
+                 properties: {
+                     coordinates: [-3.3762,29.3541],
+                     population: 497169,
+                     country: "Burundi"
+                 },
+             }
         ];
-            
         
+        for (var i = 0; i < cities.length; i++) {
+            var props = cities[i].properties;
+            console.log(props);
+        }
           
     </script>
     

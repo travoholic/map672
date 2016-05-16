@@ -13,6 +13,146 @@
 <script>
 /* JavaScript code goes here! */
 
+//    var myObject = {};      // declare and define an empty object
+//    console.log(myObject);
+//    
+//    var iguana = {
+//        name: 'Jack',       // a strong value
+//        weight: 4.2,        // a numeric value, assume kilograms
+//        age: 8,             // a numeric value
+//        eyes: 'dreamy',     // a strong value
+//        questForWorldDomination: true,   // a boolean value
+//        toolkit: {
+//            conquestFlag: 'red',
+//            surrenderFlag: 'white',
+//            food: true,
+//            music: 'Anthrax',
+//            coolSunGlasses: 8
+//        }
+//    }
+//    
+//    console.log(iguana);
+//    
+//    console.log(iguana.name);
+//    console.log(iguana.weight);
+//    
+//    console.log(iguana.toolkit.music);
+//    
+//    console.log(iguana['name']);
+//    console.log(iguana['weight']);
+//    
+//    console.log(iguana['toolkit']['music']);
+//    console.log(iguana['toolkit'].coolSunGlasses);
+//    
+//    console.log(iguana.weight);
+//    console.log(iguana.age);
+//    
+//    iguana.weight = 5.2;    // changes to a new weight of 5.2
+//    iguana.age = 9;         // changes to a new age of 9
+//    
+//    console.log(iguana.weight); // outputs new weight
+//    console.log(iguana.age);    // outputs new age
+//    
+//    iguana['weight'] = 6.1;
+//    iguana['age'] = 10;
+//    
+//    console.log(iguana.weight); // outputs new weight
+//    console.log(iguana.age);    // outputs new age
+//    
+//    iguana.color = 'green';
+//    iguana.madGenius = true;
+//    
+//    console.log(iguana);
+//    
+//    iguana['color'] = 'purple';
+//    iguana['unLovedAsBaby'] = true;
+//    
+//    console.log(iguana);
+    
+    var iguana = {
+        name: 'Jack',
+        weight: 4.2,    // assume kilograms
+        length: 1.5,     // metres
+        age: 8,
+        eyes: 'dreamy',
+        questForWorldDomination: true,
+        greeting: function(message) {
+            console.log(message);
+        },
+        calculateBMI: function(w,l) {
+            var w = this.weight;
+            var l = this.length;
+            return w / (l*l);
+        },
+        invasionPlans: function(inData) {
+            // the iguana can do something with inData here
+            console.log(inData);
+        }
+    }
+    
+    var lexData = {
+        lat: 38.23,
+        lon: -89.21,
+        name: 'Lexington',
+        pop: 821325
+    }
+    
+    iguana.invasionPlans(lexData);
+    
+    var result = iguana.calculateBMI(4.2,1.5);
+    console.log(result);
+    
+    var result2 = iguana.calculateBMI(iguana.weight,iguana.length);
+    console.log(result2);
+    
+    var result3 = iguana.calculateBMI();
+    console.log(result3);
+
+    iguana.greeting('Hello there.');
+    iguana.greeting('I am your new overlord.');
+    
+    var cityName = 'Lexington';
+    console.log(cityName);
+    var cityNameWithState = cityName.concat(", KY"); // concat method adds two strings together
+    console.log(cityNameWithState);
+    
+    var cityName = 'Lexington';
+    var cityNameCaps = cityName.toUpperCase();
+    console.log(cityNameCaps);
+    
+    var cityName = 'Lexington';
+    console.log(cityName.charAt(4)); // returns the string character at index 4, 'n'
+    console.log(cityName.indexOf('x')); // returns 2 as the first instance of 'x'
+    
+    var pop = 1200000;
+    var area = 683.24;
+    var density = pop/area;
+
+    console.log(density); // output is 1756.337450968913
+
+    var output = density.toLocaleString();
+
+    console.log(output); // output is 1,756.337
+    
+    var cities = ["Lexington", "Bowling Green"];
+    console.log(cities); // output is ["Lexington", "Bowling Green"]
+    cities.push("Frankfort");
+    console.log(cities); // output is ["Lexington", "Bowling Green", "Frankfort"]
+    cities.pop();
+    console.log(cities); // output is ["Lexington", "Bowling Green"]
+    
+//    for(var key in iguana) {
+//        console.log(key);   // outputs name, weight, age, etc.
+//    }
+//    
+//    for(var key in iguana) {
+//        console.log(iguana[key]);   // outputs Jack, 4.2, 8, etc
+//    }
+//    
+//    for(var key in iguana) {
+//        console.log(key, iguana[key]);   // outputs Jack, 4.2, 8, etc
+//    }
+    
 
 </script>
     
