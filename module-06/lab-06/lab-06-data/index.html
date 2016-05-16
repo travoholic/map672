@@ -44,8 +44,14 @@
             font-size: 1em;
             color: #001323;
         }
-        .kentucky-blue {
-            color: #165bb6;
+        .rwanda-blue {
+            color: #0000FF;
+        }
+        .uganda-red {
+            color: #FF0000;
+        }
+        .burundi-green {
+            color: #00FF00;
         }
         
     </style>
@@ -108,16 +114,36 @@
              }
         ];
         
+//        console.log(cities[0]);
+//        console.log(cities[0].properties.population);
+//        console.log(cities[0].properties.country);
+        
         for (var i = 0; i < cities.length; i++) {
 //            console.log(cities[i]);
 //            console.log(props);
             
             var props = cities[i].properties;
+            
+//            var colourClass= buildPopup(cities[i], props.population[i], props.country[i]);
 
-            var popup = "I am a temporary string value";
+            var popup = buildPopup(cities[i], props.population[i], props.country[i]) + props.country;
 
             L.marker(props.coordinates).addTo(map)
-                .bindPopup(popup);   
+                .bindPopup(popup);
+        }
+        
+        function buildPopup(city, pop, country) {
+            if(country == 'Rwanda') {
+                var colourClass = 'rwanda-blue';
+                console.log('Rwanda');
+            } else if(country == 'Uganda') {
+                var colourClass = 'uganda-red';
+                console.log('Uganda');
+            } else {
+                var colourClass = 'burundi-green';
+                console.log('Burundi');
+            }
+            return colourClass;
         }
           
     </script>
