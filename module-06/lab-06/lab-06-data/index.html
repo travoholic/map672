@@ -119,13 +119,13 @@
             
             var props = cities[i].properties;
 
-            var popup = './images/burundi-flag.jpg'+buildPopup(cities[i].name, cities[i].properties.population, cities[i].properties.country, cities[i].properties.logo);
+            var popup = buildPopup(cities[i].name, cities[i].properties.population, cities[i].properties.country, cities[i].properties.logo);
 
             L.marker(props.coordinates).addTo(map)
                 .bindPopup(popup);
         }
         
-        function buildPopup(city, pop, country) {
+        function buildPopup(city, pop, country, logo) {
             if(country == 'Rwanda') {
                 var colourClass = 'rwanda-blue';
             } else if(country == 'Uganda') {
@@ -133,7 +133,7 @@
             } else {
                 var colourClass = 'burundi-green';
             }
-            return "<div class='"+colourClass+"'><b>"+cities[i].name+"</b><br>"+
+            return "<img src="+logo+"><div class='"+colourClass+"'><b>"+cities[i].name+"</b><br>"+
                 "<b>Population</b>: "+pop.toLocaleString()+"<div>";
         }
           
