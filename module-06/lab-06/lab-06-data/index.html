@@ -87,7 +87,7 @@
         
         var cities = [
              {
-                 name: "Kigali",
+                 city: "Kigali",
                  properties: {
                      coordinates: [-1.9591, 30.0764],
                      population: 603049,
@@ -96,7 +96,7 @@
                  },
              },
              {
-                 name: "Kampala",
+                 city: "Kampala",
                  properties: {
                      coordinates: [0.3476,32.5825],
                      population: 1209000,
@@ -105,7 +105,7 @@
                  },
              },
              {
-                 name: "Bujumbura",
+                 city: "Bujumbura",
                  properties: {
                      coordinates: [-3.3762,29.3541],
                      population: 497169,
@@ -119,7 +119,7 @@
             
             var props = cities[i].properties;
 
-            var popup = buildPopup(cities[i].name, cities[i].properties.population, cities[i].properties.country, cities[i].properties.logo);
+            var popup = buildPopup(cities[i].city, cities[i].properties.population, cities[i].properties.country, cities[i].properties.logo);
 
             L.marker(props.coordinates).addTo(map)
                 .bindPopup(popup);
@@ -133,7 +133,7 @@
             } else {
                 var colourClass = 'burundi-green';
             }
-            return "<img src="+logo+"><div class='"+colourClass+"'><b>"+cities[i].name+"</b><br>"+
+            return "<img src="+logo+"><div class='"+colourClass+"'><b>"+city+"</b><br>"+
                 "<b>Population</b>: "+pop.toLocaleString()+"<div>";
         }
           
