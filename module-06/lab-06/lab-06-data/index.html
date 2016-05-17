@@ -59,17 +59,15 @@
 
 <body>
     <header>
-        <h1>Map Title</h1>
-        <h2>Map Subtitle</h2>
+        <h1>Location and Population of Kigali, Kampala, and Bujumbura</h1>
+        <h2>Colour-Coded by Country (Rwanda is Blue, Kampala is Red, and Burundi is Green)</h2>
     </header>
 
     <div id='map'></div>
 
     <footer>
-        <p>Map authored by YOUR NAME</p>
-        <p>Additional information about the data and map goes here.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl. Vestibulum commodo imperdiet lacus, sed facilisis erat placerat sit amet. Nulla consequat malesuada neque eget aliquet. Integer non convallis nisl, gravida ultrices ex. Fusce nec vestibulum elit. Sed elementum lectus ipsum, vulputate elementum ex laoreet a. Aenean eu ex varius, varius felis vitae, efficitur nulla. Quisque pretium laoreet ante, in sodales dui vehicula at. Mauris eu sem sapien.
-        </p>
+        <p>Map authored by Kirsty Henderson</p>
+        <p>City coordinates obtained from <a href="http://www.satsig.net/maps/lat-long-finder.htm" target="_blank">http://www.satsig.net/maps/lat-long-finder.htm</a> and population data was provided by the all-seeing and all-knowing <a href="http://www.google.com" target="_blank">Google</a>.</p>
     </footer>
 
     <script>
@@ -114,19 +112,11 @@
              }
         ];
         
-//        console.log(cities[0]);
-//        console.log(cities[0].properties.population);
-//        console.log(cities[0].properties.country);
-        
         for (var i = 0; i < cities.length; i++) {
-//            console.log(cities[i]);
-//            console.log(props);
             
             var props = cities[i].properties;
-            
-//            var colourClass= buildPopup(cities[i], props.population[i], props.country[i]);
 
-            var popup = buildPopup(cities[i], props.population[i], props.country[i]) + props.country;
+            var popup = buildPopup(cities[i].name, cities[i].properties.population, cities[i].properties.country);
 
             L.marker(props.coordinates).addTo(map)
                 .bindPopup(popup);
@@ -135,15 +125,13 @@
         function buildPopup(city, pop, country) {
             if(country == 'Rwanda') {
                 var colourClass = 'rwanda-blue';
-                console.log('Rwanda');
             } else if(country == 'Uganda') {
                 var colourClass = 'uganda-red';
-                console.log('Uganda');
             } else {
                 var colourClass = 'burundi-green';
-                console.log('Burundi');
             }
-            return colourClass;
+            return "<div class='"+colourClass+"'><b>"+cities[i].name+"</b><br>"+
+                "<b>Population</b>: "+pop.toLocaleString()+"<div>";
         }
           
     </script>
