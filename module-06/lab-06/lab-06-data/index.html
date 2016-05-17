@@ -91,7 +91,8 @@
                  properties: {
                      coordinates: [-1.9591, 30.0764],
                      population: 603049,
-                     country: "Rwanda"
+                     country: "Rwanda",
+                     logo: 'images/rwanda-flag.jpg'
                  },
              },
              {
@@ -99,7 +100,8 @@
                  properties: {
                      coordinates: [0.3476,32.5825],
                      population: 1209000,
-                     country: "Uganda"
+                     country: "Uganda",
+                     logo: 'images/uganda-flag.jpg'
                  },
              },
              {
@@ -107,7 +109,8 @@
                  properties: {
                      coordinates: [-3.3762,29.3541],
                      population: 497169,
-                     country: "Burundi"
+                     country: "Burundi",
+                     logo: 'images/burundi-flag.jpg'
                  },
              }
         ];
@@ -116,7 +119,7 @@
             
             var props = cities[i].properties;
 
-            var popup = buildPopup(cities[i].name, cities[i].properties.population, cities[i].properties.country);
+            var popup = './images/burundi-flag.jpg'+buildPopup(cities[i].name, cities[i].properties.population, cities[i].properties.country, cities[i].properties.logo);
 
             L.marker(props.coordinates).addTo(map)
                 .bindPopup(popup);
