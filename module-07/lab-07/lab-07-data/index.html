@@ -73,7 +73,14 @@
     }
     
     var map = L.map('map', options);
-                
+        
+    var tiles = L.tileLayer('http://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+        maxZoom: 18,
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });    
+
+    map.addLayer(tiles);
+
     var redIguana = L.latLng(40.7718,-111.9124);
         
     L.marker(redIguana, {
@@ -85,11 +92,28 @@
         
     map.on('click', function(e){
         
-        // output is o.LatLng {lat: 40.863679665481676, lng: -114.57847595214842}  
-        console.log(e.latlng); 
+        // gets lat/long on click and places a marker immediately
+        var newMarkerLocation = L.latLng(e.latlng);
+        var newMarker = L.marker(newMarkerLocation, {
+            draggable: true,
+        });
+        newMarker.addTo(map);
         
+        // defines the distanceToRedIguana variable and calculates distance in metres from newMarkerLocation to the redIguana marker
+        var distanceToRedIguana = redIguana.distanceTo(newMarkerLocation);
+        
+        // creates a popup window that appears already opened when the map is clicked and the marker is placed
+        newMarker.bindPopup('This marker is ' + distanceToRedIguana.toLocaleString() + ' km from the Red Iguana.').openPopup();
+
+        newMarker.on('dragend', function(e){
+            newMarker.setPopupContent('This marker is now ' + distanceToRedIguana.toLocaleString() + ' km from the Red Iguana.').openPopup();
+            // Everything works except the distance calculations.
+        });
     });
-                  
+        
+    // need to solve how to calculate new distance in the popup after dragging
+        
+
     </script>
     
 </body>
