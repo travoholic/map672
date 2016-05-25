@@ -89,8 +89,10 @@
             attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
         });    
 
+        // adds the actual map base (tiles) to the page
         map.addLayer(tiles);
         
+        // logs the lat/long of wherever the map is clicked
         map.on('click', function(e) {
             console.log(e.latlng);
         });

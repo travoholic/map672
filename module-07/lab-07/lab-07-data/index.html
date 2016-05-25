@@ -106,8 +106,8 @@
         newMarker.bindPopup('This marker is ' + distanceToRedIguana.toLocaleString() + ' km from the Red Iguana.').openPopup();
 
         newMarker.on('dragend', function(e){
-
-            var newDistanceToRedIguana = 20; // Everything works except the distance calculations. WHAT GOES HERE???
+            
+            var newDistanceToRedIguana = redIguana.distanceTo(newMarker.getLatLng()); // Calculates lat/long of new marker location on end of drag and distance from Red Iguana
             
             newMarker.setPopupContent('This marker is now ' + newDistanceToRedIguana.toLocaleString() + ' km from the Red Iguana.').openPopup();
  
