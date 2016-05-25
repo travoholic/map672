@@ -106,8 +106,11 @@
         newMarker.bindPopup('This marker is ' + distanceToRedIguana.toLocaleString() + ' km from the Red Iguana.').openPopup();
 
         newMarker.on('dragend', function(e){
-            newMarker.setPopupContent('This marker is now ' + distanceToRedIguana.toLocaleString() + ' km from the Red Iguana.').openPopup();
-            // Everything works except the distance calculations.
+
+            var newDistanceToRedIguana = 20; // Everything works except the distance calculations. WHAT GOES HERE???
+            
+            newMarker.setPopupContent('This marker is now ' + newDistanceToRedIguana.toLocaleString() + ' km from the Red Iguana.').openPopup();
+ 
         });
     });
         

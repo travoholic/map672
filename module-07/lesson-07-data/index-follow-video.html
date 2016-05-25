@@ -81,7 +81,20 @@
     
     map.setView([38.0489,-96.5025], 7);
         
-    console.log(map.getBounds());
+    var bounds = map.getBounds();
+        
+    console.log(bounds);
+        
+    var myMarker = L.marker([38.0489,-96.5025], {
+        draggable: true,
+        opacity: .4
+    })
+    
+    myMarker.addTo(map);
+    
+    myMarker.on('dragend', function(e) {
+        console.log(e);
+    })
     
     </script>
     
