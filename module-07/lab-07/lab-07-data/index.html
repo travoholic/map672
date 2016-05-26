@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>Lab 07 Starter Template</title>
+    <title>Distances from the Red Iguana Restaurant</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
@@ -34,6 +34,7 @@
         #map {
             width: 80%;
             height: 540px;
+            border: 1px solid black;
             margin: 10px auto;
         }
         footer {
@@ -52,17 +53,15 @@
 
 <body>
     <header>
-        <h1>Map Title</h1>
-        <h2>Map Subtitle</h2>
+        <h1>Distance to the Red Iguana</h1>
+        <h2>Never be too far away from your favourite restaurant!</h2>
     </header>
 
     <div id='map'></div>
 
     <footer>
-        <p>Map authored by YOUR NAME</p>
-        <p>Additional information about the data and map goes here.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl. Vestibulum commodo imperdiet lacus, sed facilisis erat placerat sit amet. Nulla consequat malesuada neque eget aliquet. Integer non convallis nisl, gravida ultrices ex. Fusce nec vestibulum elit. Sed elementum lectus ipsum, vulputate elementum ex laoreet a. Aenean eu ex varius, varius felis vitae, efficitur nulla. Quisque pretium laoreet ante, in sodales dui vehicula at. Mauris eu sem sapien.
-        </p>
+        <p>Map authored by Kirsty Henderson</p>
+        <p>Plot and move multiple markers to see how far away they are from the Red Iguana restaurant.</p>
     </footer>
 
     <script>
@@ -103,18 +102,16 @@
         var distanceToRedIguana = redIguana.distanceTo(newMarkerLocation);
         
         // creates a popup window that appears already opened when the map is clicked and the marker is placed
-        newMarker.bindPopup('This marker is ' + distanceToRedIguana.toLocaleString() + ' km from the Red Iguana.').openPopup();
+        newMarker.bindPopup('This marker is <strong>' + distanceToRedIguana.toLocaleString() + ' km</strong> from the Red Iguana.').openPopup();
 
         newMarker.on('dragend', function(e){
             
             var newDistanceToRedIguana = redIguana.distanceTo(newMarker.getLatLng()); // Calculates lat/long of new marker location on end of drag and distance from Red Iguana
             
-            newMarker.setPopupContent('This marker is now ' + newDistanceToRedIguana.toLocaleString() + ' km from the Red Iguana.').openPopup();
+            newMarker.setPopupContent('This marker is now <strong>' + newDistanceToRedIguana.toLocaleString() + '</strong> km from the Red Iguana.').openPopup();
  
         });
     });
-        
-    // need to solve how to calculate new distance in the popup after dragging
         
 
     </script>
