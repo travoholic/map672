@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>Distances from the Red Iguana Restaurant</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: whitesmoke;
+            font-family: Lato, sans-serif;
+            color: #0D0000;
+        }
+        header {
+            padding: 6px 10%;
+        }
+        h1 {
+            display: inline-block;
+            margin-right: 20px;
+            color: #001323;
+        }
+        h2 {
+            display: inline-block;
+            color: #001323;
+        }
+        #map {
+            width: 80%;
+            height: 540px;
+            border: 1px solid black;
+            margin: 10px auto;
+        }
+        footer {
+            padding: 6px 10%;
+            width: 80%;
+        }
+        p {
+            font-size: 1em;
+            color: #001323;
+        }
+        /* Additional style rules go here! */
+        
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Distance to the Red Iguana</h1>
+        <h2>Never be too far away from your favourite restaurant!</h2>
+    </header>
+
+    <div id='map'></div>
+
+    <footer>
+        <p>Map authored by Kirsty Henderson</p>
+        <p>Plot and move multiple markers to see how far away they are from the Red Iguana restaurant.</p>
+    </footer>
+
+    <script>
+
+    var options = {
+        center: [-1.9496,30.0866],
+        zoom: 13
+    }
+    
+    var map = L.map('map', options);
+        
+    var tiles = L.tileLayer('https://api.mapbox.com/styles/v1/travoholic/ciopeg35u004qe4nl311w00h7/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoidHJhdm9ob2xpYyIsImEiOiJjaW9vODFtbGQwMDFkd2lrajgxNHZzeGJyIn0.G89EuQe80q2iM2DMnufi3Q', {
+        maxZoom: 18
+    });    
+
+    map.addLayer(tiles);
+
+    map.on('click', function(e){
+        
+        // gets lat/long on click and places a marker immediately
+        var newMarkerLocation = L.latLng(e.latlng);
+        var newMarker = L.marker(newMarkerLocation, {
+            draggable: true,
+        });
+        newMarker.addTo(map);
+        
+        // defines the distanceToRedIguana variable and calculates distance in metres from newMarkerLocation to the redIguana marker
+        var distanceToRedIguana = redIguana.distanceTo(newMarkerLocation);
+        
+        // creates a popup window that appears already opened when the map is clicked and the marker is placed
+        newMarker.bindPopup('This marker is <strong>' + distanceToRedIguana.toLocaleString() + ' km</strong> from the Red Iguana.').openPopup();
+
+        newMarker.on('dragend', function(e){
+            
+            var newDistanceToRedIguana = redIguana.distanceTo(newMarker.getLatLng()); // Calculates lat/long of new marker location on end of drag and distance from Red Iguana
+            
+            newMarker.setPopupContent('This marker is now <strong>' + newDistanceToRedIguana.toLocaleString() + '</strong> km from the Red Iguana.').openPopup();
+ 
+        });
+    });
+        
+
+    </script>
+    
+</body>
+
+</html>

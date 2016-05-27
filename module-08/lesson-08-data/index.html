@@ -61,8 +61,102 @@
     </footer>
 
     <script>
+        
+    var map = L.map('map', {
+       center: [58.73, 25.67], // centered in Estonia
+       zoom: 7
+    });
 
-      // build your Leaflet map here!
+    var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+        subdomains: 'abcd',
+        maxZoom: 19
+    });  
+    tiles.addTo(map);
+
+    var places = {
+      "type": "FeatureCollection",
+      "features": [
+        {
+          "type": "Feature",
+          "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "name": "Tallinn",
+            "size": 159
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              24.7576904296875,
+              59.439489583059725
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "marker-color": "#ff0000",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "name": "Tartu",
+            "size": 39
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              26.74072265625,
+              58.381558503186966
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "name": "Parnu",
+            "size": 32
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              24.510498046875,
+              58.401711667608
+            ]
+          }
+        },
+        {
+          "type": "Feature",
+          "properties": {
+            "marker-color": "#7e7e7e",
+            "marker-size": "medium",
+            "marker-symbol": "",
+            "name": "Haapsalu",
+            "size": 11
+          },
+          "geometry": {
+            "type": "Point",
+            "coordinates": [
+              23.571166992187496,
+              58.947174821111965
+            ]
+          }
+        }
+      ]
+    }
+    
+    var placesLeaflet = L.geoJson(places, {
+        pointToLayer : function(feature, latlng) {
+            console.log(feature);
+            return L.circle(latlng, feature.properties.size * 100);
+        }
+    }).addTo(map);
+        
+//    console.log(places);
+//    console.log(placesLeaflet);
                   
     </script>
     
