@@ -92,21 +92,22 @@
     map.on('click', function(e){
         
         // gets lat/long on click and places a marker immediately
-        var newMarkerLocation = L.latLng(e.latlng);
+        var newMarkerLocation = e.latlng;
+        
         var newMarker = L.marker(newMarkerLocation, {
             draggable: true,
         });
         newMarker.addTo(map);
         
         // defines the distanceToRedIguana variable and calculates distance in metres from newMarkerLocation to the redIguana marker
-        var distanceToRedIguana = redIguana.distanceTo(newMarkerLocation);
+        var distanceToRedIguana = redIguana.distanceTo(newMarkerLocation)/1000;
         
         // creates a popup window that appears already opened when the map is clicked and the marker is placed
         newMarker.bindPopup('This marker is <strong>' + distanceToRedIguana.toLocaleString() + ' km</strong> from the Red Iguana.').openPopup();
 
         newMarker.on('dragend', function(e){
             
-            var newDistanceToRedIguana = redIguana.distanceTo(newMarker.getLatLng()); // Calculates lat/long of new marker location on end of drag and distance from Red Iguana
+            var newDistanceToRedIguana = redIguana.distanceTo(newMarker.getLatLng())/1000; // Calculates lat/long of new marker location on end of drag and distance from Red Iguana
             
             newMarker.setPopupContent('This marker is now <strong>' + newDistanceToRedIguana.toLocaleString() + '</strong> km from the Red Iguana.').openPopup();
  
