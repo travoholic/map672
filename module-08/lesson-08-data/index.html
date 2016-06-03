@@ -49,115 +49,91 @@
 
 <body>
     <header>
-        <h1>Map Title</h1>
-        <h2>Map Subtitle</h2>
+        <h1>Wind Power Plants</h1>
+        <h2>Capacity Less then 5 MW</h2>
     </header>
 
     <div id='map'></div>
 
     <footer>
-        <p>Map authored by YOUR NAME</p>
-        <p>Additional information about the data and map goes here.</p>
+        <p>Map authored by Kirsty Henderson</p>
+        <p>A map of wind plants in the US with capacity less than 5 MW.</p>
     </footer>
+    
+    <script src="power-plants.js"`></script>
 
     <script>
         
     var map = L.map('map', {
-       center: [58.73, 25.67], // centered in Estonia
-       zoom: 7
+        center: [36,-94],
+        zoom: 4,
     });
-
+        
     var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
         subdomains: 'abcd',
         maxZoom: 19
     });  
     tiles.addTo(map);
-
-    var places = {
-      "type": "FeatureCollection",
-      "features": [
-        {
-          "type": "Feature",
-          "properties": {
-            "marker-color": "#7e7e7e",
-            "marker-size": "medium",
-            "marker-symbol": "",
-            "name": "Tallinn",
-            "size": 159
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [
-              24.7576904296875,
-              59.439489583059725
-            ]
-          }
-        },
-        {
-          "type": "Feature",
-          "properties": {
-            "marker-color": "#ff0000",
-            "marker-size": "medium",
-            "marker-symbol": "",
-            "name": "Tartu",
-            "size": 39
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [
-              26.74072265625,
-              58.381558503186966
-            ]
-          }
-        },
-        {
-          "type": "Feature",
-          "properties": {
-            "marker-color": "#7e7e7e",
-            "marker-size": "medium",
-            "marker-symbol": "",
-            "name": "Parnu",
-            "size": 32
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [
-              24.510498046875,
-              58.401711667608
-            ]
-          }
-        },
-        {
-          "type": "Feature",
-          "properties": {
-            "marker-color": "#7e7e7e",
-            "marker-size": "medium",
-            "marker-symbol": "",
-            "name": "Haapsalu",
-            "size": 11
-          },
-          "geometry": {
-            "type": "Point",
-            "coordinates": [
-              23.571166992187496,
-              58.947174821111965
-            ]
-          }
-        }
-      ]
-    }
-    
-    var placesLeaflet = L.geoJson(places, {
-        pointToLayer : function(feature, latlng) {
-            console.log(feature);
-            return L.circle(latlng, feature.properties.size * 100);
-        }
-    }).addTo(map);
         
-//    console.log(places);
-//    console.log(placesLeaflet);
-                  
+//    console.log(plants);
+//    L.geoJson(plants).addTo(map);
+        
+//    L.geoJson(plants, {
+//            pointToLayer: function(feature, latlng) {
+//        }
+//    }).addTo(map);
+        
+//    L.geoJson(plants, {
+//        pointToLayer: function(feature,latlng) {
+//        return L.circleMarker(latlng, {
+//            color: 'orange',
+//            weight: 1,
+//            fillColor: 'yellow',
+//            fillOpacity: 1,
+//            radius: 2
+//        });   
+//    }
+//    }).addTo(map);
+
+L.geoJson(plants, {
+    pointToLayer: function(feature,latlng) {
+            return L.circleMarker(latlng, {
+                color: 'red',
+                weight: 1,
+                fillColor: 'orange',
+                fillOpacity: .8,
+                radius: 2
+            });   
+    },
+//    filter: function(feature, layer) {
+//        if(feature.properties.fuel_source['Natural Gas']){
+//            return feature;   
+//        }
+//    }
+//    filter : function(feature, layer) {
+//        if(feature.properties.capacity_mw > 500){
+//            return feature;   
+//        }
+//    }
+    
+//    filter : function(feature, layer) {
+//        if(feature.properties.capacity_mw < 500 && 
+//            feature.properties.fuel_source.Coal){
+//            return feature;
+//        }
+//    }
+//}).addTo(map);
+    
+    // looking for wind plants with capacity less than 5 mw
+    filter : function(feature, layer) {
+        if(feature.properties.capacity_mw < 5 && 
+            feature.properties.fuel_source.Wind){
+            return feature;
+        }
+    }
+}).addTo(map); 
+
     </script>
     
 </body>
