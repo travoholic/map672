@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>Lab 08 Starter</title>
+    <title>Map of Wind Plants in the US by Capacity in MW</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
@@ -49,15 +49,15 @@
 
 <body>
     <header>
-        <h1>Map Title</h1>
-        <h2>Map Subtitle</h2>
+        <h1>Wind Power Plants in the US</h1>
+        <h2>Capacity in MW</h2>
     </header>
 
     <div id='map'></div>
 
     <footer>
-        <p>Map authored by YOUR NAME</p>
-        <p>Additional information about the data and map goes here.</p>
+        <p>Map authored by Kirsty Henderson</p>
+        <p>Map of wind power plants in the US by capacity in MW.</p>
     </footer>
 
     <script src="power-plants.js"></script>
@@ -80,27 +80,32 @@
         return b.properties.capacity_mw - a.properties.capacity_mw;
     });
       
-    L.geoJson(plants2, {
+    L.geoJson(plants, {
         pointToLayer: function(feature,latlng) {
             return L.circleMarker(latlng, {
-                color: 'orange',
-                weight: 1,
-                fillColor: 'yellow',
-                fillOpacity: .8,
+                color: 'cornflowerBlue',
+                weight: 2,
+                fillColor: 'Gainsboro',
+                fillOpacity: .5,
                 radius: getRadius(feature.properties.capacity_mw)
             });   
         },
+    filter : function(feature, layer) {
+        if(feature.properties.fuel_source.Wind){
+            return feature;
+        }
+    },
         onEachFeature: function(feature,layer) {
             layer.on('mouseover', function() {
-                layer.bindPopup('hi i am a circle');
+                layer.bindPopup('<b>' + feature.properties.plant_name + '</b><br>Capacity in MW: ' + feature.properties.capacity_mw);
                 layer.setStyle({
-                    fillColor: 'red'
+                    fillColor: 'cornflowerBlue'
                 });
             });
             layer.on('mouseout', function() {
-                layer.bindPopup('hi i am a circle');
+                layer.bindPopup('<b>' + feature.properties.plant_name + '</b><br>Capacity in MW: ' + feature.properties.capacity_mw);
                 layer.setStyle({
-                    fillColor: 'yellow'
+                    fillColor: 'Gainsboro'
                 });
             });
         }
