@@ -97,7 +97,7 @@
     },
         onEachFeature: function(feature,layer) {
             layer.on('mouseover', function() {
-                layer.bindPopup('<b>' + feature.properties.plant_name + '</b><br>Capacity in MW: ' + feature.properties.capacity_mw);
+                layer.bindPopup('<b>' + feature.properties.plant_name + '</b><br>' + feature.properties.capacity_mw + ' MW' + feature.properties.fuel_source.hydro );
                 layer.setStyle({
                     fillColor: 'cornflowerBlue'
                 });
@@ -115,6 +115,8 @@
         var radius = Math.sqrt(area/Math.PI);
         return radius * .6;  
     }
+        
+    console.log(feature.properties.fuel_source.hydro);
 
     </script>
     
