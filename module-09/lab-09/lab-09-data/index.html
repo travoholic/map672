@@ -126,8 +126,8 @@
 
         
     map.on('click', function(e) {
-    for(var layer in layerInfo) {    
-        geoJsonLayers[layer].eachLayer(function(layer) {
+    for(var l in layerInfo) {    
+        geoJsonLayers[l].eachLayer(function(layer) {
             var distance = e.latlng.distanceTo(layer.getLatLng())/1000;
 
             if(distance > 500) {
@@ -140,7 +140,8 @@
                     stroke: true,
                     fill: true  
                 });  
-                layer.bindPopup("<b>Plant Name:</b> " +geoJsonLayers[layer]+ "<br><b>Fuel Source:</b> <br>I am <b>"+distance.toLocaleString()+ 
+                
+                layer.bindPopup("<b>Plant Name:</b> " +layer.feature.properties.plant_name+ "<br><b>Fuel Source:</b> <br>I am <b>"+distance.toLocaleString()+ 
                                 "km</b><br> from the click point.");
             } 
         });
