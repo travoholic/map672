@@ -75,7 +75,80 @@
       });  
       
       tiles.addTo(map);
-                  
+
+    var commonStyles = {
+        weight: 1,
+        stroke: 1,
+        fillOpacity: .3
+    }   
+        
+    var layerInfo = {
+        hydroLayer: {source:"Hydro", color:'#1f78b4'}, 
+        nuclearLayer: {source:"Nuclear", color:'pink'}, 
+        windLayer: {source:"Wind", color:'grey'}
+    };
+
+    var geoJsonLayers = {};
+
+    for(var layer in layerInfo) {     
+        geoJsonLayers[layer] = L.geoJson(plants, {
+            pointToLayer: function(feature,latlng) {
+                return L.circleMarker(latlng, commonStyles);
+            },
+            filter: function(feature) {
+                if(feature.properties.fuel_source[layerInfo[layer].source]) {
+                    return feature;
+                }
+            },
+            style: function(feature) {
+                return {
+                    color: layerInfo[layer].color,
+                    fillColor: layerInfo[layer].color,
+                    radius: getRadius(feature.properties.fuel_source[layerInfo[layer].source])
+                } 
+            } 
+        }).addTo(map);
+        
+        }
+
+    function getRadius(val) {
+        var radius = Math.sqrt(val/Math.PI);
+        return radius * .8;   
+    }
+
+    var sourcesLabels = {
+        "<b style='color:#1f78b4'>Hydro</b>": geoJsonLayers.hydroLayer,
+        "<b style='color:pink'>Nuclear</b>": geoJsonLayers.nuclearLayer,
+        "<b style='color:grey'>Wind</b>": geoJsonLayers.windLayer
+    }
+
+    L.control.layers(null, sourcesLabels, { collapsed:false }).addTo(map);
+
+        
+    map.on('click', function(e) {
+    for(var layer in layerInfo) {    
+        geoJsonLayers[layer].eachLayer(function(layer) {
+            var distance = e.latlng.distanceTo(layer.getLatLng())/1000;
+
+            if(distance > 500) {
+                layer.setStyle({
+                    stroke: false,
+                    fill: false
+                });  
+            } else {
+                layer.setStyle({
+                    stroke: true,
+                    fill: true  
+                });  
+                layer.bindPopup("<b>Plant Name:</b> " +geoJsonLayers[layer]+ "<br><b>Fuel Source:</b> <br>I am <b>"+distance.toLocaleString()+ 
+                                "km</b><br> from the click point.");
+            } 
+        });
+    };
+    });
+        
+        console.log(layer);
+        
     </script>
     
 </body>
