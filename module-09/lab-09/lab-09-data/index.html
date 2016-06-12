@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>Lab 09 Template</title>
+    <title>Map of Nuclear, Hydro, and Wind Plants in the US and Their Outputs</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
@@ -49,15 +49,14 @@
 
 <body>
     <header>
-        <h1>Map Title</h1>
-        <h2>Map Subtitle</h2>
+        <h1>Map of Nuclear, Hydro, and Wind Plants in the US and Their Outputs</h1>
+        <h2>Filtered by plant type and distance from click on the map.</h2>
     </header>
 
     <div id='map'></div>
 
     <footer>
-        <p>Map authored by YOUR NAME</p>
-        <p>Additional information about the data and map goes here.</p>
+        <p>Map authored by Kirsty Henderson</p>
     </footer>
 
     <script src="power-plants.js"></script>
@@ -126,8 +125,10 @@
 
         
     map.on('click', function(e) {
-    for(var layer in layerInfo) {    
-        geoJsonLayers[layer].eachLayer(function(layer) {
+        
+       for(var l in layerInfo) {    
+            geoJsonLayers[l].eachLayer(function(layer) {
+
             var distance = e.latlng.distanceTo(layer.getLatLng())/1000;
 
             if(distance > 500) {
@@ -140,14 +141,12 @@
                     stroke: true,
                     fill: true  
                 });  
-                layer.bindPopup("<b>Plant Name:</b> " +geoJsonLayers[layer]+ "<br><b>Fuel Source:</b> <br>I am <b>"+distance.toLocaleString()+ 
-                                "km</b><br> from the click point.");
+                
+                layer.bindPopup("<b>Plant Name:</b> " +layer.feature.properties.plant_name+ "<br><b>Fuel Source:</b> " +layer.feature.properties.fuel_source+ "<br>Distance from Click:  <b>"+distance.toLocaleString());
             } 
         });
     };
     });
-        
-        console.log(layer);
         
     </script>
     
