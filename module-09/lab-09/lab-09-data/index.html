@@ -140,9 +140,15 @@
                 layer.setStyle({
                     stroke: true,
                     fill: true  
-                });  
+            }); 
                 
-                layer.bindPopup("<b>Plant Name:</b> " +layer.feature.properties.plant_name+ "<br><b>Fuel Source:</b> " +layer.feature.properties.fuel_source+ "<br>Distance from Click:  <b>"+distance.toLocaleString());
+            var props = layer.feature.properties;
+            
+            layer.bindPopup("<b>Plant Name:</b> " +
+                props.plant_name + "<br><b>Fuel Source:</b> " +
+                layerInfo[l].source + " (" + 
+                props.fuel_source[layerInfo[l].source] + "MW)" + 
+                "<br>Distance from Click:  <b>"+distance.toLocaleString());
             } 
         });
     };
