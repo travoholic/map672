@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>Lab 05 Starter Template</title>
+    <title>Population Densities</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
@@ -101,19 +101,12 @@
     
     button.addEventListener("click", function() {
          
-        var units = prompt('Enter the units for calculating density', 'Enter "miles" or "km"');
+        do {
+            var units = prompt('Enter the units for calculating density', 'Enter "miles" or "km"');
+        } while (units != "miles" && units != "km")
         
         mapCities(units);   // call a function named mapCities, and send the units variable as an argument
         
-        for (var i = 0; i < cities.length; i++) {
-
-            var density = calcPopDensity(cityAreas[i], cityPops[i], units);
-            
-            var popup = '<h3>' + cities[i] + '</h3><b>Population Density:</b>' + density.toLocaleString();
-        
-            L.marker(cityCoords[i]).addTo(map)
-                 .bindPopup(popup);
-        }
         
     }); // addEventListener callback function ends here
 
@@ -126,7 +119,15 @@
     
         function mapCities(units) {
         
-            return units;
+            for (var i = 0; i < cities.length; i++) {
+
+                var density = calcPopDensity(cityAreas[i], cityPops[i], units);
+            
+                var popup = '<h3>' + cities[i] + '</h3><b>Population Density: </b>' + density.toLocaleString() + ' people per square ' + units + '.';
+        
+                L.marker(cityCoords[i]).addTo(map)
+                 .bindPopup(popup);
+            }
             
         }
 
@@ -135,12 +136,10 @@
         function calcPopDensity(cityAreas, cityPops, units) {
 
             if(units == 'miles') {
-                var density = cityPops / cityAreas + ' people per square mile.';
+                var density = cityPops / cityAreas;
             } else if(units == 'km') {
-                var density = cityPops / (cityAreas / 0.38610) + ' people per square km.';
-            } else {
-                var units = prompt('Enter the units for calculating density', 'Enter "miles" or "km"'); // figure out how to loop this!!!
-            }
+                var density = cityPops / (cityAreas * 2.589); // 
+            } 
 
             return density;
         }
