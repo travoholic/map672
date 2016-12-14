@@ -6,7 +6,7 @@
 
 2. Expand on my knowledge of HTML and CSS and see how they connect to and work with Javascript.
 
-3. Become an online mapping Javascript ninja. Or at least get to a suitable level with JS to be able to confidently and continually build on my knowledge base as I tackle new projects.
+3. Become an online mapping JavaScript ninja. Or at least get to a suitable level with JS to be able to confidently and continually build on my knowledge base as I tackle new projects.
 
 4. Continue to learn about best practices in cartography.
 
