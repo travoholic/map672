@@ -82,23 +82,24 @@
         
         // BEGIN WRITING CODE FOR LAB 03 HERE
         
-        var city1Name = 'Lexington';
-        var city1Lat = 38.0527;
-        var city1Lon = -84.5068;
-        var city1Pop = 308428;
-        var city1Capital = false;
+        // can declare multiple (related) variables like so:
+        var city1Name = 'Lexington',
+            city1Lat = 38.0527,
+            city1Lon = -84.5068,
+            city1Pop = 308428,
+            city1Capital = false;
         
-        var city2Name = 'Frankfort';
-        var city2Lat = 38.2016;
-        var city2Lon = -84.8749;
-        var city2Pop = 27453;
-        var city2Capital = true;
+        var city2Name = 'Frankfort',
+            city2Lat = 38.2016,
+            city2Lon = -84.8749,
+            city2Pop = 27453,
+            city2Capital = true;
         
-        var city3Name = 'Louisville';
-        var city3Lat = 38.2557;
-        var city3Lon = -85.7565;
-        var city3Pop = 253128;
-        var city3Capital = false;
+        var city3Name = 'Louisville',
+            city3Lat = 38.2557,
+            city3Lon = -85.7565,
+            city3Pop = 253128,
+            city3Capital = false;
         
         var totalPop = city1Pop + city2Pop + city3Pop;
         console.log('The total population of these cities is', totalPop);
@@ -113,7 +114,7 @@
         
         // CITY1 MARKER CODE HERE
         var city1Popup = "<b>"+city1Name+"</b><br>"
-                        +"<b>population</b>: "+city1Pop;
+                        +"<b>population</b>: "+city1Pop.toLocaleString();
         
         if(city1Capital == true) {
             city1Popup += "<br>Capital of the Commonwealth of Kentucky";   
@@ -124,7 +125,7 @@
         
 //         CITY2 MARKER CODE HERE
         var city2Popup = "<b>"+city2Name+"</b><br>"
-                        +"<b>population</b>: "+city2Pop;
+                        +"<b>population</b>: "+city2Pop.toLocaleString();
       
       if(city2Capital == true) {
           city2Popup += "<br>Capital of the Commonwealth of Kentucky";   
@@ -135,7 +136,7 @@
         
 //         CITY3 MARKER CODE HERE
         var city3Popup = "<b>"+city3Name+"</b><br>"
-                        +"<b>population</b>: "+city3Pop;
+                        +"<b>population</b>: "+city3Pop.toLocaleString();
         
         if(city3Capital == true) {
             city3Popup += "<br>Capital of the Commonwealth of Kentucky";   
