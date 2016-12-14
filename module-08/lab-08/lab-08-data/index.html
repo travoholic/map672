@@ -88,35 +88,41 @@
                 fillColor: 'Gainsboro',
                 fillOpacity: .5,
                 radius: getRadius(feature.properties.capacity_mw)
-            });   
+                });   
+            },
+        filter : function(feature, layer) {
+            if(feature.properties.fuel_source.Wind){
+                return feature;
+            }
         },
-    filter : function(feature, layer) {
-        if(feature.properties.fuel_source.Wind){
-            return feature;
-        }
-    },
         onEachFeature: function(feature,layer) {
             layer.on('mouseover', function() {
-                layer.bindPopup('<b>' + feature.properties.plant_name + '</b><br>' + feature.properties.capacity_mw + ' MW' + feature.properties.fuel_source.hydro );
                 layer.setStyle({
                     fillColor: 'cornflowerBlue'
                 });
             });
             layer.on('mouseout', function() {
-                layer.bindPopup('<b>' + feature.properties.plant_name + '</b><br>Capacity in MW: ' + feature.properties.capacity_mw);
                 layer.setStyle({
                     fillColor: 'Gainsboro'
                 });
             });
+            console.log(feature.properties.fuel_source)
+            var content = '<b>' + feature.properties.plant_name + '</b><br>' + feature.properties.capacity_mw + ' MW<br>';
+            feature.properties.fuel_source.hydro;
+            
+            for(var source in feature.properties.fuel_source) {
+                content += '<b>' + source + '<b>: ' + feature.properties.fuel_source[source] + 'MW<br>';
+            }
+            
+            layer.bindPopup(content);
         }
     }).addTo(map);
 
     function getRadius(area) {
         var radius = Math.sqrt(area/Math.PI);
-        return radius * .6;  
+        return radius * 1.2;  
     }
         
-    console.log(feature.properties.fuel_source.hydro);
 
     </script>
     
